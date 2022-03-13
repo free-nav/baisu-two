@@ -92,9 +92,8 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 	});
 	//监听提交-修改
 	form.on('submit(edit_link)', function(data) {
-		var datas = JSON.stringify(data.field);
-		console.log(datas)
-		editUrl(datas)
+		console.log(data.field)
+		editUrl(data.field)
 		return false;
 	});
 
@@ -150,7 +149,7 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 //修改链接
 function editUrl(data) {
 
-	$.post("index.php?c=api&method=edit_link", {
+	$.post("/index.php?c=api&method=edit_link", {
 		fid: data.fid,
 		id: data.id,
 		url: data.url,                                                                                                                                                          

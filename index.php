@@ -328,7 +328,7 @@
 					<textarea name="description" id="description" placeholder="请输入站点描述（选填）"></textarea>
 				</div>
 				<div class="list">
-					<button lay-submit lay-filter="edit_link">添加</button>
+					<button lay-submit lay-filter="edit_link">修改</button>
 				</div>
 
 			</form>
