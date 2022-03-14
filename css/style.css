@@ -148,7 +148,7 @@ a {
 }
 
 .index-nav .type-list .list a {
-	width: 100%;
+	width: 80%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -183,6 +183,17 @@ a {
 	font-size: 18px;
 	transition: 0.3s all;
 }
+.index-nav .type-list .list.add{
+	margin-top: 12px;
+}
+.index-nav .type-list .list.add a{
+	width: 100%;
+	border: 1px solid #64a15e;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+
 
 .index-nav .type-list .list:hover a {
 	background-color: #64a15e;

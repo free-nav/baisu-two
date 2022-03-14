@@ -192,7 +192,7 @@ function keyClick() {
 keyClick();
 
 //锚点、返回顶部
-$("a.list").click(function() {
+$("a.catlist").click(function() {
 	$("html, body").animate({
 		scrollTop: $($(this).attr("href")).offset().top - 5 + "px"
 	}, 500);

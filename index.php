@@ -21,6 +21,7 @@
 		<link rel="stylesheet" type="text/css" href="templates/<?php echo TEMPLATE; ?>/layui/css/layui.css" />
 		<style type="text/css">
 			/*链接描述是否显示*/
+			
 			.site-main .site-list .list .desc {
 				/*none：不显示，block:显示*/
 				display: none;
@@ -44,7 +45,7 @@
 			foreach ($categorys as $category) {
 				$font_icon = empty($category['font_icon']) ? '' : "<i class='{$category['font_icon']}'></i> ";
 		?>
-						<a href="#category-<?php echo $category['id']; ?>" class="list">
+						<a href="#category-<?php echo $category['id']; ?>" class="list catlist">
 							<?php echo $font_icon; ?>
 							<?php echo htmlspecialchars_decode($category['name']); ?>
 						</a>
@@ -65,15 +66,19 @@
 			foreach ($categorys as $category) {
 				$font_icon = empty($category['font_icon']) ? '' : "<i class='{$category['font_icon']}'></i> ";
 		?>
-		<div class="list">
-					<a href="#category-<?php echo $category['id']; ?>">
-						<?php echo $font_icon; ?>
-						<?php echo htmlspecialchars_decode($category['name']); ?>
-					</a>
-					<!--<span class="editFid" data-fid = "<?php echo $category['id']; ?>"><i class="iconfont icon-bianji"></i></span>-->
+					<div class="list">
+						<a class="catlist" href="#category-<?php echo $category['id']; ?>">
+							<?php echo $font_icon; ?>
+							<?php echo htmlspecialchars_decode($category['name']); ?>
+						</a>
+						<span class="editFid" data-fid = "<?php echo $category['id']; ?>"><i class="iconfont icon-bianji"></i></span>
 					</div>
 					<?php } ?>
 
+					<div class="list add" id="addCat">
+						<a>
+							<i class="iconfont icon-tianjia"></i>添加分类</a>
+					</div>
 			</div>
 			<div class="user-info">
 				<div class="pic">
@@ -337,7 +342,7 @@
 			</form>
 		</div>
 		<!--修改链接 E-->
-		
+
 		<!--添加分类 S-->
 		<div class="addsite-main" id="addFidBox">
 			<div class="title">
@@ -373,14 +378,14 @@
 			</form>
 		</div>
 		<!--添加分类 E-->
-		
+
 		<!--修改分类 S-->
 		<div class="addsite-main" id="editFidBox">
 			<div class="title">
 				修改分类
 			</div>
-			<form class="layui-form list-w" lay-filter="editsite">
-				<input type="hidden" name="fid" id="fid" value="" required lay-verify="required" />
+			<form class="layui-form list-w" lay-filter="editfid">
+				<input type="hidden" name="id" id="id" value="" required lay-verify="required" />
 				<div class="list">
 					<span class="icon"><i class="iconfont icon-bianji"></i></span>
 					<input type="text" class="text" name="name" id="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off">
