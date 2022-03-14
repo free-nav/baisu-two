@@ -65,10 +65,13 @@
 			foreach ($categorys as $category) {
 				$font_icon = empty($category['font_icon']) ? '' : "<i class='{$category['font_icon']}'></i> ";
 		?>
-					<a href="#category-<?php echo $category['id']; ?>" class="list">
+		<div class="list">
+					<a href="#category-<?php echo $category['id']; ?>">
 						<?php echo $font_icon; ?>
 						<?php echo htmlspecialchars_decode($category['name']); ?>
 					</a>
+					<!--<span class="editFid" data-fid = "<?php echo $category['id']; ?>"><i class="iconfont icon-bianji"></i></span>-->
+					</div>
 					<?php } ?>
 
 			</div>
@@ -294,7 +297,7 @@
 				修改链接
 			</div>
 			<form class="layui-form list-w" lay-filter="editsite">
-				<input type="hidden" name="id" id="fid" value="" required lay-verify="required" />
+				<input type="hidden" name="id" id="id" value="" required lay-verify="required" />
 				<div class="list">
 					<span class="icon"><i class="iconfont icon-charulianjie"></i></span>
 					<input type="text" class="text" name="url" id="url" required lay-verify="required|url" placeholder="请输入完整的网址链接" autocomplete="off">
@@ -334,6 +337,79 @@
 			</form>
 		</div>
 		<!--修改链接 E-->
+		
+		<!--添加分类 S-->
+		<div class="addsite-main" id="addFidBox">
+			<div class="title">
+				添加分类
+			</div>
+			<form class="layui-form list-w" lay-filter="editsite">
+				<div class="list">
+					<span class="icon"><i class="iconfont icon-bianji"></i></span>
+					<input type="text" class="text" name="name" id="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off">
+				</div>
+				<div class="list">
+					<span class="icon"><i class="iconfont icon-shezhi1"></i></span>
+					<input type="text" class="text" name="font_icon" id="font_icon" required lay-verify="required" placeholder="请输入或选择分类图标" autocomplete="off">
+				</div>
+
+				<div class="list list-2">
+					<div class="li">
+						<span>权重：</span>
+						<input type="text" class="num" name="weight" min="0" max="999" value="0" required lay-verify="required|number" autocomplete="off">
+					</div>
+					<div class="li">
+						私有：
+						<input type="checkbox" lay-skin="switch" lay-text="是|否" name="property" value="0">
+					</div>
+				</div>
+				<div class="list">
+					<textarea name="description" id="description" placeholder="请输入分类描述（选填）"></textarea>
+				</div>
+				<div class="list">
+					<button lay-submit lay-filter="add_fid">添加</button>
+				</div>
+
+			</form>
+		</div>
+		<!--添加分类 E-->
+		
+		<!--修改分类 S-->
+		<div class="addsite-main" id="editFidBox">
+			<div class="title">
+				修改分类
+			</div>
+			<form class="layui-form list-w" lay-filter="editsite">
+				<input type="hidden" name="fid" id="fid" value="" required lay-verify="required" />
+				<div class="list">
+					<span class="icon"><i class="iconfont icon-bianji"></i></span>
+					<input type="text" class="text" name="name" id="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off">
+				</div>
+				<div class="list">
+					<span class="icon"><i class="iconfont icon-shezhi1"></i></span>
+					<input type="text" class="text" name="font_icon" id="font_icon" required lay-verify="required" placeholder="请输入或选择分类图标" autocomplete="off">
+				</div>
+
+				<div class="list list-2">
+					<div class="li">
+						<span>权重：</span>
+						<input type="text" class="num" name="weight" min="0" max="999" value="0" required lay-verify="required|number" autocomplete="off">
+					</div>
+					<div class="li">
+						私有：
+						<input type="checkbox" lay-skin="switch" lay-text="是|否" name="property" value="1">
+					</div>
+				</div>
+				<div class="list">
+					<textarea name="description" id="description" placeholder="请输入分类描述（选填）"></textarea>
+				</div>
+				<div class="list">
+					<button lay-submit lay-filter="edit_fid">修改</button>
+				</div>
+
+			</form>
+		</div>
+		<!--修改分类 E-->
 
 		<!--iconfont-->
 		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_3000268_oov6h4vru0h.css" />

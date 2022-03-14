@@ -38,7 +38,6 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 					console.log('复制' + listId);
 					break;
 				case 3:
-					//					window.open('index.php?c=admin&page=edit_link&id=' + listId, '_blank');
 					layer.open({
 						type: 1,
 						title: false,
@@ -96,6 +95,12 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 		editUrl(data.field)
 		return false;
 	});
+	//监听提交-添加分类
+	form.on('submit(add_fid)', function(data) {
+		console.log(data.field);
+		addFID(data.field)
+		return false;
+	});
 
 	//识别链接信息
 	$("input#title").focus(function() {
@@ -109,12 +114,26 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 		}
 	});
 
+	// 修改分类
+
+	$('span.editFid').click(function() {
+		layer.open({
+			type: 1,
+			title: false,
+			closeBtn: 0,
+			shadeClose: true,
+			skin: 'addsiteBox',
+			content: $('#editFidBox')
+		});
+		console.log('编辑' + listId);
+	});
+
 	//查询单个链接信息
 	function get_a_link(id) {
 		$.get("index.php?c=api&method=get_a_link", {
 			id: id
 		}, function(data, status) {
-//			console.log(data);
+			//			console.log(data);
 			if(data.code == 0) {
 				console.log(data);
 				if(data.data.property == 0) {
@@ -122,9 +141,9 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 				} else {
 					var property = true
 				};
-				
-				$('.addsite-main .list.type span.editfid-'+data.data.fid).addClass("hover").siblings().removeClass('hover');
-				
+
+				$('.addsite-main .list.type span.editfid-' + data.data.fid).addClass("hover").siblings().removeClass('hover');
+
 				form.val('editsite', {
 					"id": data.data.id,
 					"url": data.data.url,
@@ -142,7 +161,52 @@ layui.use(['dropdown', 'layer', 'form'], function() {
 			}
 		});
 
-	}
+	};
+
+	//查询单个链接信息
+	function get_a_link(id) {
+		$.get("index.php?c=api&method=get_a_link", {
+			id: id
+		}, function(data, status) {
+			//			console.log(data);
+			if(data.code == 0) {
+				console.log(data);
+				if(data.data.property == 0) {
+					var property = false
+				} else {
+					var property = true
+				};
+
+				$('.addsite-main .list.type span.editfid-' + data.data.fid).addClass("hover").siblings().removeClass('hover');
+
+				form.val('editsite', {
+					"id": data.data.id,
+					"url": data.data.url,
+					"title": data.data.title,
+					"description": data.data.description,
+					"fid": data.data.fid,
+					"weight": data.data.weight,
+					"property": property,
+				});
+			} else {
+				//获取信息失败
+				layer.msg('获取信息失败，请重试！', {
+					icon: 5,
+				});
+			}
+		});
+
+	};
+
+	//添加分类
+	layer.open({
+		type: 1,
+		title: false,
+		closeBtn: 0,
+		shadeClose: true,
+		skin: 'addsiteBox',
+		content: $('#addFidBox')
+	});
 
 });
 
@@ -152,7 +216,7 @@ function editUrl(data) {
 	$.post("/index.php?c=api&method=edit_link", {
 		fid: data.fid,
 		id: data.id,
-		url: data.url,                                                                                                                                                          
+		url: data.url,
 		title: data.title,
 		weight: data.weight,
 		property: data.property,
@@ -176,8 +240,32 @@ function editUrl(data) {
 			});
 		}
 	});
-}
+};
 
+//添加分类
+function addFID(data) {
+	$.post("/index.php?c=api&method=add_category", {
+		data
+	}, function(data, status) {
+		console.log(data)
+		console.log(status)
+		if(data.code == 0) {
+			layer.msg('添加成功！', {
+				icon: 6,
+				time: 600,
+				end: function() {
+//					window.location.reload();
+					return false;
+				}
+			});
+		} else {
+			//修改失败
+			layer.msg('添加失败，请重试！', {
+				icon: 5,
+			});
+		}
+	});
+}
 
 //
 //		fid: data.fid,
