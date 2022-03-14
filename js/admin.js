@@ -245,7 +245,11 @@ function editUrl(data) {
 //添加分类
 function addFID(data) {
 	$.post("/index.php?c=api&method=add_category", {
-		data
+		name: data.name,
+		font_icon: data.font_icon,
+		weight: data.weight,
+		property: data.property,
+		description: data.description,
 	}, function(data, status) {
 		console.log(data)
 		console.log(status)

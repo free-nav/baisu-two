@@ -360,7 +360,7 @@
 					</div>
 					<div class="li">
 						私有：
-						<input type="checkbox" lay-skin="switch" lay-text="是|否" name="property" value="0">
+						<input type="checkbox" lay-skin="switch" lay-text="是|否" name="property" value="1">
 					</div>
 				</div>
 				<div class="list">
