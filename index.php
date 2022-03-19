@@ -261,6 +261,10 @@
 					<input type="text" class="text" name="url" id="url" required lay-verify="required|url" placeholder="请输入完整的网址链接" autocomplete="off">
 				</div>
 				<div class="list">
+					<span class="icon"><i class="iconfont icon-charulianjie"></i></span>
+					<input type="text" class="text" name="url_standby" id="url_standby" placeholder="请输入备用链接，如果没有，请留空" autocomplete="off">
+				</div>
+				<div class="list">
 					<span class="icon"><i class="iconfont icon-bianji"></i></span>
 					<input type="text" class="text" name="title" id="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off">
 				</div>
@@ -306,6 +310,10 @@
 				<div class="list">
 					<span class="icon"><i class="iconfont icon-charulianjie"></i></span>
 					<input type="text" class="text" name="url" id="url" required lay-verify="required|url" placeholder="请输入完整的网址链接" autocomplete="off">
+				</div>
+				<div class="list">
+					<span class="icon"><i class="iconfont icon-charulianjie"></i></span>
+					<input type="text" class="text" name="url_standby" id="url_standby" placeholder="请输入备用链接，如果没有，请留空" autocomplete="off">
 				</div>
 				<div class="list">
 					<span class="icon"><i class="iconfont icon-bianji"></i></span>
