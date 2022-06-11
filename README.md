@@ -27,6 +27,6 @@ void(open('http://www.你的域名.com/index.php?c=admin&page=add_quick_tpl&url=
 
 
 ## 相关链接
-
+* [baisu-two](https://gitee.com/baisucode/baisu-two)
 * [OneNav官网](https://nav.rss.ink/)
 * [onenav作者](https://www.xiaoz.me/)
